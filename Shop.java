@@ -29,6 +29,7 @@ public class Shop extends DiscountRate {
 		System.out.println("Service Expense : "+serviceExpense);
 		System.out.println("Product Expense : "+productExpense);
 		System.out.println("Total Expense : "+getTotalExpense());
+		System.out.println("Date : "+date);
 		System.out.println();
 	}
 	public static void main(String[] args) {
