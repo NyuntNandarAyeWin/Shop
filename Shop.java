@@ -3,7 +3,7 @@ package Shop;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Shop extends DiscountRate {
+public class Shop {
 	
 	Customer cst;
 	Date date;
@@ -12,8 +12,6 @@ public class Shop extends DiscountRate {
 	
 	
 	public Shop(Customer cst,double serviceExpense, double productExpense, Date date) {
-		super.name = cst.name;
-		super.memberType = cst.memberType;
 		this.cst = cst;
 		this.serviceExpense = serviceExpense;
 		this.productExpense = productExpense; 
@@ -21,12 +19,17 @@ public class Shop extends DiscountRate {
 	}
 	
 	public double getTotalExpense() {
-		double totExp =(serviceExpense + productExpense) -((serviceExpense * getServiceDiscountRate(memberType)) + (productExpense * getProductDiscountRate(memberType)));
+		double totExp;
+		if(cst.isMember()) {
+			totExp =(serviceExpense + productExpense) -((serviceExpense * DiscountRate.getServiceDiscountRate(cst.memberType)) + (productExpense * DiscountRate.getProductDiscountRate(cst.memberType)));
+		}else {
+			totExp = serviceExpense + productExpense;
+		}
 		return totExp;
 	}
 
 	public void display() {
-		System.out.println(super.toString());
+		System.out.println(cst.toString());
 		System.out.println("Service Expense : "+serviceExpense);
 		System.out.println("Product Expense : "+productExpense);
 		System.out.println("Total Expense : "+getTotalExpense());

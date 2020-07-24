@@ -1,7 +1,6 @@
 package Shop;
 
-public class DiscountRate extends Customer{
-	Customer cs = new Customer();
+public class DiscountRate{
 	
 	static double serviceDiscountPremium = 0.2;
 	static double serviceDiscountGold = 0.15;
@@ -11,34 +10,27 @@ public class DiscountRate extends Customer{
 	static double productDiscountGold = 0.1;
 	static double productDiscountSilver = 0.1;
 	
-	double getServiceDiscountRate(String type){
-		super.memberType = type;
+	static double getServiceDiscountRate(String type){
 		double serviceExp = 0.0;
-		if(super.isMember()) {
 			if(type.equals("Premium")) {
 				serviceExp = serviceDiscountPremium;
 			}else if(type.equals("Gold")) {
 				serviceExp = serviceDiscountGold;
-			}else{
+			}else if(type.equals("Premium")){
 				serviceExp = serviceDiscountSilver;
 			}
-		}	
 		return serviceExp;
 	}
 	
-	double getProductDiscountRate(String type) {
-		super.memberType = type;
+	static double getProductDiscountRate(String type) {
 		double productExp = 0.0;
-		if(super.isMember()) {
 			if(type.equals("Premium")) {
 				productExp = serviceDiscountPremium;
 			}else if(type.equals("Gold")) {
 				productExp = serviceDiscountGold;
-			}else{
+			}else  if(type.equals("Premium")){
 				productExp = serviceDiscountSilver;
 			}
-		}
-			
 		return productExp;
 	}
 }
