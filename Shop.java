@@ -1,6 +1,7 @@
 package Shop;
 
 import java.util.Date;
+import java.util.Scanner;
 
 public class Shop extends DiscountRate {
 	
@@ -33,20 +34,35 @@ public class Shop extends DiscountRate {
 		System.out.println();
 	}
 	public static void main(String[] args) {
-		Customer cst1 = new Customer("Daw Aye", "Premium");
-		Customer cst2 = new Customer("Ma Ma", "Gold");
-		Customer cst3 = new Customer("Shwe Yote", "Silver");
-		Customer cst4 = new Customer("khay","");
+		Scanner sc = new Scanner(System.in);
+		Customer custom = new Customer();
+		String ans = " ";
 		
-		Shop sh1 = new Shop(cst1, 2000, 8000,new Date());
-		Shop sh2 = new Shop(cst2, 1000, 5000, new Date());
-		Shop sh3 = new Shop(cst3, 500, 3000,new Date());
-		Shop sh4 = new Shop(cst4, 200, 4000, new Date());
+		do {
+			custom.memberType = "Normal";
+			System.out.print("Enter your name : ");
+			custom.name = sc.next();
+			System.out.print("Do you have member card : ");
+			String mc = sc.next();
+			if(mc.equals("yes")) {
+				System.out.print("Enter your member type : ");
+				custom.memberType = sc.next();
+			}
+			System.out.print("Enter your service expense : ");
+			double service = sc.nextDouble();
+			System.out.print("Enter your product expense : ");
+			double product = sc.nextDouble();
+			
+			Shop sh = new Shop(custom, service, product,new Date());
+			sh.display();
+			
+			System.out.print("Have Next Customer : ");
+			ans = sc.next();
+			
+		}while(ans.equals("yes"));
 		
-		sh1.display();
-		sh2.display();
-		sh3.display();
-		sh4.display();
+		sc.close();
+		
 	}
 
 }

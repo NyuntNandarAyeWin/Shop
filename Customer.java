@@ -6,10 +6,6 @@ public class Customer {
 	boolean member = false;
 	String memberType;
 	
-	String p = "Premium";
-	String g = "Gold";
-	String s = "Silver";
-	
 	public Customer() {
 		
 	}
@@ -19,11 +15,11 @@ public class Customer {
 	}
 	
 	public boolean isMember() {
-		if(memberType.equals(p)) {
+		if(memberType.equals("Premium")) {
 			member = true;
-		}else if(memberType.equals(g)) {
+		}else if(memberType.equals("Gold")) {
 			member = true;
-		}else if(memberType.equals(s)) {
+		}else if(memberType.equals("Silver")) {
 			member = true;
 		}
 		return member;
